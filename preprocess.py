@@ -57,6 +57,9 @@ def preprocess_video(filename, model):
         with torch.no_grad():
             output = model(input_batch)['out'][0]
             mask_video(fFrame, output.argmax(0))
+        # Press Q to quit
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
     video.release()
     cv2.destroyAllWindows()
     #return mask_video(fFrame, output.argmax(0))
@@ -96,7 +99,19 @@ def mask_video(fFrame, output_predictions):
     mask = output_predictions.byte().cpu().numpy()
     r = Image.fromarray(mask).resize((w,h))
 
-    r.putpalette(colors)
+    # Apply color map for visualization
+    #color_mask = np.zeros_like(fFrame)
+    #color_mask[mask == 15] = [0, 255, 0]   # Example: person=green (class 15)
 
-    plt.imshow(r)
-    plt.show()
+    breakpoint()
+    # Overlay mask on original frame
+    overlay = cv2.addWeighted(fFrame, 0.7, colors, 0.3, 0)
+
+    breakpoint()
+    # Show live result
+    cv2.imshow("Segmentation", overlay)
+
+    #r.putpalette(colors)
+
+    #plt.imshow(r)
+    #plt.show()
