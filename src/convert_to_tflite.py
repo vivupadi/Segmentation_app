@@ -1,12 +1,24 @@
 import onnx
 from onnx_tf.backend import prepare
+from onnxsim import simplify
+from onnx import utils
 
 # Load ONNX model
-onnx_model = onnx.load("deeplabv3_mobilenet.onnx")
+onnx_model = onnx.load("mobilenet_renamed.onnx")
 
-# Convert ONNX to TensorFlow
-tf_rep = prepare(onnx_model)
+#breakpoint()
+# Check validity
+#sorted_model = utils.polish_model(onnx_model)
+#onnx.save(sorted_model, "sorted.onnx")
+#print("Saved fixed model as sorted.onnx")
+#onnx.checker.check_model(onnx_model )
+#breakpoint()
+# Simplify + re-sort nodes
+model_simplified, check = simplify(onnx_model )
 
-# Export as SavedModel (needed for TFLite conversion)
-saved_model_dir = "./saved_model"
-tf_rep.export_graph(saved_model_dir)
+assert check, "Simplified ONNX model could not be validated"
+
+onnx.save(model_simplified, "simplified.onnx")
+print("Simplified model saved to simplified.onnx")
+
+

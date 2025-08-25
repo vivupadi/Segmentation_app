@@ -29,12 +29,3 @@ output_predictions = preprocess_video(filename, model)
 
 mask_image(filename, output_predictions)
 
-dummy_input = torch.randn(1, 3, 224, 224)
-
-# Export to ONNX
-torch.onnx.export(
-    model, 
-    dummy_input, 
-    "deeplabv3_mobilenet.onnx",
-    opset_version=11
-)
