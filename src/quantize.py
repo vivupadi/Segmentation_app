@@ -9,15 +9,6 @@ onnx-tf convert -i deeplabv3_mobilenet.onnx -o deeplabv3_mobilenet.pb
 
 """
 
-"""# Load SavedModel
-converter = tf.compat.v1.lite.TFLiteConverter.from_frozen_graph(
-    graph_def_file="deeplabv3_mobilenet.pb",
-    input_arrays=["input"],       # must match the names in your graph
-    output_arrays=["output"],     # must match the names in your graph
-    input_shapes={"input": [1, 3, 224, 224]}
-)"""
-
-
 converter = tf.lite.TFLiteConverter.from_saved_model("deeplabv3_mobilenet.pb")
 
 """def representative_dataset():
@@ -26,6 +17,7 @@ converter = tf.lite.TFLiteConverter.from_saved_model("deeplabv3_mobilenet.pb")
         yield [data]
 """
 
+#Quantize to float 16, mobile net has some layers which cano be quantized to int8
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
 converter.target_spec.supported_types = [tf.float16]
 
