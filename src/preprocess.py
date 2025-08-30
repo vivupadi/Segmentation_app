@@ -40,6 +40,7 @@ def preprocess_video(filename, model):
         input_image = cv2.cvtColor(fFrame, cv2.COLOR_BGR2RGB)
         input_image = cv2.resize(input_image, (224, 224))
         #input_image = Image.open(filename)
+        #breakpoint()
 
         #get frames
         #input_image = input_image.convert("RGB")
@@ -48,7 +49,9 @@ def preprocess_video(filename, model):
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
         input_tensor = preprocess(input_image)
+        
         input_batch = input_tensor.unsqueeze(0) # create a mini-batch as expected by the model
+       
         # move the input and model to GPU for speed if available
         if torch.cuda.is_available():
             input_batch = input_batch.to('cuda')
