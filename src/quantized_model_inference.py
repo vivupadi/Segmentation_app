@@ -83,12 +83,14 @@ def mask_frame(fFrame, mask):
    
 
 
-
+#input video
 filename = "C:\\Users\\Vivupadi\\Downloads\\PXL_20250802_072807827.mp4"
 
-interpreter = tf.lite.Interpreter(model_path="D:\\Segmentation\\src\\deeplabv3_mobilenet_quant.tflite")
+
+#load quantized model
+interpreter = tf.lite.Interpreter(model_path="D:\\Segmentation\\model\\deeplabv3_mobilenet_quant.tflite")
 interpreter.allocate_tensors()
-#interpreter.eval()
+
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 print("input_details:", input_details)
