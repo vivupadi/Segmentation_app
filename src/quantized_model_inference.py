@@ -3,7 +3,7 @@ import tensorflow as tf
 
 from preprocess import *
 
-def preprocess_frame(frame, input_details):
+def preprocess_frame(frame):
     #h,w = input_details[0]['shape'][1:3]
     resized = cv2.resize(frame, (224,224))
 
@@ -32,18 +32,19 @@ def preprocess_video_for_inference(filename, interpreter, input_details, output_
         if not ret:
             break
         
-        input_data = preprocess_frame(fFrame, input_details)
-        breakpoint()
+        input_data = preprocess_frame(fFrame)
+        #breakpoint()
         output = run_inference(interpreter, input_data, input_details, output_details)
-        breakpoint()
+        #breakpoint()
        
          # If output is logits → take argmax
         if output.ndim == 3:   # (H, W, num_classes)
-            mask = np.argmax(output, axis=-1)
+            #mask = np.argmax(output, axis=-1)
+            mask = output.argmax(0)
         else:   # already (H,W)
             mask = output
-        
-        mask_frame(fFrame, mask, input_data, output)
+        #breakpoint()
+        mask_frame(fFrame, mask)
 
         #plt.show()
         # Press Q to quit
@@ -53,21 +54,12 @@ def preprocess_video_for_inference(filename, interpreter, input_details, output_
     cv2.destroyAllWindows()
 
 
-def mask_frame(fFrame, mask, input_data, output):
-
-    input_image = cv2.cvtColor(fFrame, input_data)
-    input_image = cv2.resize(input_image, (224, 224))
+def mask_frame(fFrame, mask):
 
     # create a color pallette, selecting a color for each class
     palette = torch.tensor([2 ** 25 - 1, 2 ** 15 - 1, 2 ** 21 - 1])
     colors = torch.as_tensor([i for i in range(21)])[:, None] * palette
     colors = (colors % 255).numpy().astype("uint8")
-
-    # If output is logits → take argmax
-    if output.ndim == 3:   # (H, W, num_classes)
-        mask = np.argmax(output, axis=-1)
-    else:   # already (H,W)
-        mask = output
 
     # Apply color map for visualization
     mask_color = np.zeros((224, 224, 3), dtype=np.uint8)
@@ -92,10 +84,10 @@ def mask_frame(fFrame, mask, input_data, output):
 
 
 
-
 filename = "C:\\Users\\Vivupadi\\Downloads\\PXL_20250802_072807827.mp4"
 
 interpreter = tf.lite.Interpreter(model_path="D:\\Segmentation\\src\\deeplabv3_mobilenet_quant.tflite")
+interpreter.allocate_tensors()
 #interpreter.eval()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
