@@ -2,8 +2,7 @@ import onnx
 from onnx_tf.backend import prepare
 
 # Load ONNX model
-onnx_model = onnx.load("deeplabv3_mobilenet.onnx")
-
+onnx_model = onnx.load("D:\\Segmentation\\model\\deeplabv3_mobilenet.onnx")
 
 for inp in onnx_model.graph.input:
     print(inp.name)
@@ -18,5 +17,5 @@ for node in onnx_model.graph.node:
     node.input[:] = [i.replace(".", "_") for i in node.input]
     node.output[:] = [o.replace(".", "_") for o in node.output]
 
-onnx.save(onnx_model, "mobilenet_renamed.onnx")
+onnx.save(onnx_model, "D:\\Segmentation\\model\\mobilenet_renamed.onnx")
 

@@ -9,7 +9,7 @@ onnx-tf convert -i deeplabv3_mobilenet.onnx -o deeplabv3_mobilenet.pb
 
 """
 
-converter = tf.lite.TFLiteConverter.from_saved_model("deeplabv3_mobilenet.pb")
+converter = tf.lite.TFLiteConverter.from_saved_model("D:\\Segmentation\\model\\deeplabv3_mobilenet.pb")
 
 """def representative_dataset():
     for _ in range(100):
@@ -31,7 +31,7 @@ converter.inference_output_type = tf.uint8"""
 tflite_model = converter.convert()
 
 # Save model
-with open("deeplabv3_mobilenet_quant.tflite", "wb") as f:
+with open("D:\\Segmentation\\model\\deeplabv3_mobilenet_quant.tflite", "wb") as f:
     f.write(tflite_model)
 
 print("✅ Quantized TFLite model saved: deeplabv3_mobilenet_quant.tflite")
