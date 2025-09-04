@@ -3,7 +3,12 @@ A realtime frame-by-frame segmentation on user-given video input.
 
 
 ## Model Used
+Deeplabv3-MobileNetV3-Large is constructed by a Deeplabv3 model using the MobileNetV3 large backbone. The pre-trained model has been trained on a subset of COCO train2017, on the 20 categories that are present in the Pascal VOC dataset.
 
+The accuracies of the pre-trained model evaluated on COCO val2017 dataset are listed below.
+
+Model structure	              Mean IOU	Global Pixelwise Accuracy
+deeplabv3_mobilenet_v3_large	  60.3	          91.2
 
 ## Inference on CPU
 ![til](https://github.com/vivupadi/Segmentation_app/blob/main/data/Normal_trimmed.gif)
