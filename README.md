@@ -6,7 +6,7 @@ A realtime frame-by-frame segmentation on user-given video input.
 
 
 ## Inference on CPU
-
+https://github.com/vivupadi/Segmentation_app/blob/main/data/Normal_trimmed.gif
 
 ## Quantization
 
