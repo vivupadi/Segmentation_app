@@ -17,8 +17,14 @@ deeplabv3_mobilenet_v3_large	  60.3	          91.2
 ## Quantization
 
 
-## Quantized model(float 16) on local system
+## Quantized model(float 16) inference on local system
 ![til](https://github.com/vivupadi/Segmentation_app/blob/main/data/quantized_trimmed.gif)
+
+## Quantized model(float 16) inference on Raspberry Pi 4
+
+# Future Plans
+
+## Reduce model to segment only Humans
 
 ## Inference on Raspberry Pi 4 + Camera module
 
