@@ -31,3 +31,10 @@ deeplabv3_mobilenet_v3_large	  60.3	          91.2
 
 
 ## Structure of Pipeline
+
+
+<div align="center">
+⭐ Star this repo if you find it helpful!
+  
+Made with ❤️ by Vivek Padayattil
+</div>
