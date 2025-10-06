@@ -10,7 +10,13 @@ Model structure	              Mean IOU	Global Pixelwise Accuracy
 deeplabv3_mobilenet_v3_large	  60.3	          91.2
 </pre>
 
-## Tech Stack
+## 🛠️Tech Stack  
+-OpenCV
+-PyTorch
+-ONNX
+-Tensorflow Lite
+-Python
+-**Version Control**: Git & GitHub
 
 ## Model architecture
 
