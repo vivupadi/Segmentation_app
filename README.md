@@ -10,6 +10,8 @@ Model structure	              Mean IOU	Global Pixelwise Accuracy
 deeplabv3_mobilenet_v3_large	  60.3	          91.2
 </pre>
 
+## Tech Stack
+
 ## Model architecture
 
 ## Inference on CPU
