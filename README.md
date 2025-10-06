@@ -12,10 +12,15 @@ deeplabv3_mobilenet_v3_large	  60.3	          91.2
 
 ## 🛠️Tech Stack  
 -OpenCV
+
 -PyTorch
+
 -ONNX
+
 -Tensorflow Lite
+
 -Python
+
 -**Version Control**: Git & GitHub
 
 ## Model architecture
