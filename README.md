@@ -1,4 +1,4 @@
-# Image Segmentation on Videos
+# Semantic Segmentation on Videos
 A realtime frame-by-frame segmentation on user-given video input.
 
 ## Model Used
