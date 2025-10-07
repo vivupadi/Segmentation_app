@@ -23,6 +23,27 @@ deeplabv3_mobilenet_v3_large	  60.3	          91.2
 
 -**Version Control**: Git & GitHub
 
+## Installation on Local System
+### Clone the repository
+
+git clone https://github.com/vivupadi/Segmentation_app.git
+
+cd Segmentation_app
+
+### Create virtual environment
+
+python -m venv venv
+
+source venv/bin/activate # On Windows: venv\Scripts\activate
+
+### Install dependencies
+
+pip install -r requirements.txt
+
+### Run the Application
+
+python.py
+
 ## Model architecture
 
 ## Inference on CPU
