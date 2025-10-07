@@ -28,7 +28,7 @@ deeplabv3_mobilenet_v3_large	  60.3	          91.2
 
 git clone https://github.com/vivupadi/Segmentation_app.git
 
-cd Segmentation_app
+cd Segmentation_app/src
 
 ### Create virtual environment
 
@@ -42,7 +42,7 @@ pip install -r requirements.txt
 
 ### Run the Application
 
-python.py
+python load_model.py
 
 ## Model architecture
 
