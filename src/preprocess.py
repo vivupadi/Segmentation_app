@@ -32,6 +32,12 @@ def preprocess_image(filename, model):
 def preprocess_video(filename, model):
     video = cv2.VideoCapture(filename)
 
+    
+    """video = cv2.VideoCapture(0)   ## To activate webcam and perform inference realtime 
+    video.set(3, 640)
+    video.set(4, 480)"""
+ 
+
     while video.isOpened():
         ret, fFrame = video.read()
         if not ret:

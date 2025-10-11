@@ -27,6 +27,11 @@ def run_inference(interpreter, input_data, input_details, output_details):
 def preprocess_video_for_inference(filename, interpreter, input_details, output_details):
     video = cv2.VideoCapture(filename)
 
+    """video= cv2.VideoCapture(0)       
+    video.set(3, 640)
+    video.set(4, 480)"""
+
+
     while video.isOpened():
         ret, fFrame = video.read()
         if not ret:
